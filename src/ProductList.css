@@ -64,8 +64,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
-    /* background-color: pink; */
-    /* justify-content: space-between; */
     padding: 20px;
     width: 100%;
     align-items: center;
@@ -98,13 +96,15 @@ body {
 
 .product-title {
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-.product-price {
+.product-cost {
     color: #e74c3c;
     font-size: 1.2rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .product-image {
@@ -123,8 +123,24 @@ body {
     margin-top: 10px;
 }
 
+.added-to-cart {
+    background-color: #6d6d6d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 10px;
+    width: 150px;
+    margin: 0 auto;
+}
+
 .product-button:hover {
     background-color: #c0392b;
+}
+
+.added-to-cart:hover {
+    background-color: #5a5a5a;
 }
 
 /* Pseudo-elements - Sale badge */

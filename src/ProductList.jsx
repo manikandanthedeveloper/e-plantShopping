@@ -9,7 +9,7 @@ function ProductList({ onHomeClick }) {
 	const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
 	const [addedToCard, setAddedToCard] = useState({});
 	const dispatch = useDispatch();
-	const productItems = useSelector((state) => state.cart);
+	const cartItems = useSelector((state) => state.cart);
 
 	const plantsArray = [
 		{
@@ -304,19 +304,22 @@ function ProductList({ onHomeClick }) {
 					</a>
 				</div>
 				<div>
-					{" "}
 					<a
 						href="#"
 						onClick={(e) => handleCartClick(e)}
 						style={styleA}
 					>
 						<h1 className="cart">
+							<span style={{ fontSize: "20px" }}>
+								{cartItems.items.length}
+							</span>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 256 256"
 								id="IconChangeColor"
 								height="68"
 								width="68"
+								style={{ width: "50px", height: "50px" }}
 							>
 								<rect
 									width="156"
@@ -368,14 +371,20 @@ function ProductList({ onHomeClick }) {
 											${plant.cost}
 										</div>
 										{/* Display plant cost */}
-										<button
-											className="product-button"
-											onClick={() =>
-												handleAddToCart(plant)
-											} // Handle adding plant to cart
-										>
-											Add to Cart
-										</button>
+										{addedToCard[plant.name] ? (
+											<div className="added-to-cart">
+												Added to Cart
+											</div>
+										) : (
+											<button
+												className="product-button"
+												onClick={() =>
+													handleAddToCart(plant)
+												} // Handle adding plant to cart
+											>
+												Add to Cart
+											</button>
+										)}
 									</div>
 								))}
 							</div>
