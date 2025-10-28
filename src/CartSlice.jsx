@@ -20,7 +20,7 @@ export const CartSlice = createSlice({
 		},
 		removeItem: (state, action) => {
 			state.items = state.items.filter(
-				(item) => item.name !== action.payload
+				(item) => item.name !== action.payload.name
 			);
 		},
 		updateQuantity: (state, action) => {
@@ -29,8 +29,9 @@ export const CartSlice = createSlice({
 			const itemExist = state.items.findIndex(
 				(item) => item.name === name
 			);
-
-			if (itemExist) {
+			if (quantity === 0) {
+				state.items = state.items.filter((item) => item.name !== name);
+			} else {
 				state.items[itemExist].quantity = quantity;
 			}
 		},
