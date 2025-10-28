@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./ProductList.css";
 import CartItem from "./CartItem";
 import { addItem } from "./CartSlice";
@@ -9,6 +9,7 @@ function ProductList({ onHomeClick }) {
 	const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
 	const [addedToCard, setAddedToCard] = useState({});
 	const dispatch = useDispatch();
+	const productItems = useSelector((state) => state.cart);
 
 	const plantsArray = [
 		{
@@ -271,7 +272,7 @@ function ProductList({ onHomeClick }) {
 		dispatch(addItem(plant));
 		setAddedToCard((prev) => ({ ...prev, [plant.name]: true }));
 	};
-
+	console.log("dring", productItems);
 	return (
 		<div>
 			<div className="navbar" style={styleObj}>
